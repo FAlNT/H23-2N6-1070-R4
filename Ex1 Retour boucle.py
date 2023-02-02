@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 import os                             # N'enlevez pas ces lignes.
 os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans le répertoire de ce script
 
@@ -15,19 +16,21 @@ os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans 
 # Si vous êtes fort en programmation, faites le code maintenant
 # Si vous avez besoin de plus d'explications, vous pourrez les trouver plus bas dans cet exercice
 
+total_likes = 0
+nb_videos = 0 
+with open("Ex1_youtube_Nb_Likes.txt", "r" ) as fichier:
+    lines = fichier.readlines()
+    for like in lines: 
+        valeur = like.split("|")
+        like_indiv = int(valeur[-1])
+        total_likes += like_indiv
+    for video in lines :
+     nb_videos += 1
 
-
-
-
-
-
-
-
-
-
-
-
-
+print(nb_videos)
+print(total_likes)
+        
+    
 
 
 
@@ -49,6 +52,4 @@ os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans 
 #       Dans la boucle, faites un split de la ligne sur le caractère '|'
 #       Prenez le dernier élément de la liste obtenue, transformez le en un entier et ajoutez ce nombre à votre total_likes
 #       Augmenter aussi le 1 votre variable nb_videos
-# Après la boucle, imprimez le résultat demandé dans le terminal 
-
-
+# Après la boucle, imprimez le résultat demandé dans le terminal

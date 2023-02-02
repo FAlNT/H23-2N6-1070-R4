@@ -1,4 +1,6 @@
-import os                             # N'enlevez pas ces lignes.
+import os
+from posixpath import split
+from urllib.request import AbstractDigestAuthHandler                             # N'enlevez pas ces lignes.
 os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans le répertoire de ce script
 #
 # Le fichier Ex2_Depenses_Janvier.txt contient les dépenses faites en janvier de 2022
@@ -19,23 +21,17 @@ os.chdir(os.path.dirname(__file__))   # Elles permettent de se positionner dans 
 # Si vous êtes ok, allez-y
 # Si vous en ressentez le besoin, il y a des explications plus détaillées dans le bas de ce document
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+total_mensuel = 0
+ligne_a_imprimer = ""
+with open("Ex2_Depenses_Janvier.txt", "r") as fichier:
+    with open("Ex2_Total_Janvier.txt", "w") as fichier2:
+        fichier2.write("    MOIS    TOTAL")
+        lignes = fichier.readlines()
+        for ligne in lignes: 
+            if ligne.find("-"):
+                ligne_a_imprimer = ligne
+            else: ligne.split(":")
+            print(lignes)
 
 
 
